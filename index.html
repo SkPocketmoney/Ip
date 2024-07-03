@@ -3,43 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IP Addresses</title>
+    <title>Random IP Address Generator</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            margin: 20px;
+            text-align: center;
+            margin-top: 50px;
         }
-        ul {
-            list-style-type: none;
-        }
-        li {
-            background-color: #f0f0f0;
-            margin: 5px 0;
-            padding: 10px;
-            border: 1px solid #ccc;
+        #ip-address {
+            font-size: 24px;
+            margin-bottom: 20px;
             cursor: pointer;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #0056b3;
         }
     </style>
 </head>
 <body>
-    <h1>IP Addresses</h1>
-    <ul>
-        <li onclick="copyToClipboard('192.168.0.1')">192.168.0.1</li>
-        <li onclick="copyToClipboard('203.0.113.5')">203.0.113.5</li>
-        <li onclick="copyToClipboard('172.16.254.3')">172.16.254.3</li>
-        <li onclick="copyToClipboard('204.0.113.60')">204.0.113.60</li>
-        <li onclick="copyToClipboard('198.51.100.22')">198.51.100.22</li>
-        <li onclick="copyToClipboard('195.0.2.44')">195.0.2.44</li>
-        <li onclick="copyToClipboard('201.0.113.55')">201.0.113.55</li>
-        <li onclick="copyToClipboard('182.11.1.12')">182.11.1.12</li>
-        <li onclick="copyToClipboard('197.51.100.77')">197.51.100.77</li>
-        <li onclick="copyToClipboard('194.168.1.10')">194.168.1.10</li>
-    </ul>
+    <div id="ip-address" onclick="copyToClipboard()">Click the IP address to copy to clipboard.</div>
+    <button onclick="generateIP()">Generate IP Address</button>
 
     <script>
-        function copyToClipboard(text) {
-            navigator.clipboard.writeText(text).then(function() {
-                alert('Copied: ' + text);
+        function generateIP() {
+            // Generate a random IP address
+            var ip = Array.from({length: 4}, () => Math.floor(Math.random() * 256)).join('.');
+            // Display the generated IP address
+            document.getElementById('ip-address').textContent = ip;
+        }
+
+        function copyToClipboard() {
+            // Copy the IP address to clipboard
+            var ipText = document.getElementById('ip-address').textContent;
+            navigator.clipboard.writeText(ipText).then(function() {
+                // Success message (optional)
+                console.log('IP address copied to clipboard: ' + ipText);
             }, function(err) {
                 console.error('Could not copy text: ', err);
             });
