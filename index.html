@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IP Addresses</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        ul {
+            list-style-type: none;
+        }
+        li {
+            background-color: #f0f0f0;
+            margin: 5px 0;
+            padding: 10px;
+            border: 1px solid #ccc;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>IP Addresses</h1>
+    <ul>
+        <li onclick="copyToClipboard('192.168.0.1')">192.168.0.1</li>
+        <li onclick="copyToClipboard('203.0.113.5')">203.0.113.5</li>
+        <li onclick="copyToClipboard('172.16.254.3')">172.16.254.3</li>
+        <li onclick="copyToClipboard('204.0.113.60')">204.0.113.60</li>
+        <li onclick="copyToClipboard('198.51.100.22')">198.51.100.22</li>
+        <li onclick="copyToClipboard('195.0.2.44')">195.0.2.44</li>
+        <li onclick="copyToClipboard('201.0.113.55')">201.0.113.55</li>
+        <li onclick="copyToClipboard('182.11.1.12')">182.11.1.12</li>
+        <li onclick="copyToClipboard('197.51.100.77')">197.51.100.77</li>
+        <li onclick="copyToClipboard('194.168.1.10')">194.168.1.10</li>
+    </ul>
+
+    <script>
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text).then(function() {
+                alert('Copied: ' + text);
+            }, function(err) {
+                console.error('Could not copy text: ', err);
+            });
+        }
+    </script>
+</body>
+</html>
